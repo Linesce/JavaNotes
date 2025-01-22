@@ -4,5 +4,8 @@
 
 2.@ComponentScan,表示启动类会自动扫描所在package及所在的子类下的组件
 
-3.@EnableAutoConfiguration：核心的自动装配注解，底层是一个@Import注解，会导入AutoConfigurationImportSelector配置类，会执行 selectImports方法，会调用SpringFactoriesLoader.loadFactoryNames方法，去扫描 META-INF/spring.factories 文件中名称为EnableAutoConfiguation对应的字符串列表，还有会扫描  
-META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports 文件中所有信息，加载进内存封装成一个数组，最后会根据各种条件【起步依赖、@Conditional相关注解】进行过滤，找到匹配条件的全类名，并封装成字符串数组到内存中。在调用run方法时，通过反射创建对象并交给Spring容器管理
+3.@EnableAutoConfiguration：核心的自动装配注解，
+  底层是一个@Import注解，会导入AutoConfigurationImportSelector配置类，会执行 selectImports方法，
+  会调用SpringFactoriesLoader.loadFactoryNames方法，去扫描 META-INF/spring.factories 文件中名称为EnableAutoConfiguation对应的字符串列表,
+  还有会扫描META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports 文件中所有信息，加载进内存封装成一个数组，
+  最后会根据各种条件【起步依赖、@Conditional相关注解】进行过滤，找到匹配条件的全类名，并封装成字符串数组到内存中。在调用run方法时，通过反射创建对象并交给Spring容器管理
